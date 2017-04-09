@@ -74,13 +74,6 @@ pi_interval(::Type{BigFloat}) = parameters.pi
 pi_interval(::Type{Float64})  = float_interval_pi
 
 
-function Base.setrounding{T}(f::Function, ::Type{Rational{T}},
-    rounding_mode::RoundingMode)
-    setrounding(f, float(Rational{T}), rounding_mode)
-end
-
-
-
-float{T}(x::Interval{T}) = convert( Interval{float(T)}, x)  # https://github.com/dpsanders/IntervalArithmetic.jl/issues/174
+float{T}(x::Interval{T}) = convert(Interval{float(T)}, x)  # https://github.com/dpsanders/IntervalArithmetic.jl/issues/174
 
 big(x::Interval) = convert(Interval{BigFloat}, x)
